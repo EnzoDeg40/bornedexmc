@@ -45,13 +45,13 @@ public class ModBlocks {
 
     public static void initialize() {
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register((itemGroup) -> {
-			itemGroup.add(ModBlocks.CONDENSED_DIRT.asItem());
+			itemGroup.add(ModBlocks.BENCHMARK_BLOCK.asItem());
 		});
     }
     
-    public static final Block CONDENSED_DIRT = register(
-        "condensed_dirt",
-        Block::new,
+    public static final Block BENCHMARK_BLOCK = register(
+        "benchmark_block",
+        BenchmarkBlock::new,
         AbstractBlock.Settings.create().sounds(BlockSoundGroup.GRASS),
         true
     );
