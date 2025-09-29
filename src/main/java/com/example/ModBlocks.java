@@ -45,14 +45,14 @@ public class ModBlocks {
 
     public static void initialize() {
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register((itemGroup) -> {
-			itemGroup.add(ModBlocks.BENCHMARK_BLOCK.asItem());
+			itemGroup.add(ModBlocks.WALL_ATTACHABLE_BENCHMARK_BLOCK.asItem());
 		});
     }
     
-    public static final Block BENCHMARK_BLOCK = register(
-        "benchmark_block",
-        BenchmarkBlock::new,
-        AbstractBlock.Settings.create().sounds(BlockSoundGroup.GRASS),
+    public static final Block WALL_ATTACHABLE_BENCHMARK_BLOCK = register(
+        "wall_attachable_benchmark_block",
+        WallAttachableBenchmarkBlock::new,
+        AbstractBlock.Settings.create().sounds(BlockSoundGroup.STONE).strength(2.0f),
         true
     );
 }
