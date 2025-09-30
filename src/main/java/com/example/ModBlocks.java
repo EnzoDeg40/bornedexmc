@@ -51,7 +51,7 @@ public class ModBlocks {
     public static final Block WALL_ATTACHABLE_BENCHMARK_BLOCK = register(
         "wall_attachable_benchmark_block",
         WallAttachableBenchmarkBlock::new,
-        AbstractBlock.Settings.create().sounds(BlockSoundGroup.STONE).strength(2.0f),
+        AbstractBlock.Settings.create().sounds(BlockSoundGroup.STONE).strength(2.0f).requiresTool(),
         true
     );
 }

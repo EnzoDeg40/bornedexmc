@@ -25,11 +25,10 @@ import net.minecraft.world.WorldView;
 public class WallAttachableBenchmarkBlock extends Block {
     public static final EnumProperty<Direction> FACING = Properties.HORIZONTAL_FACING;
     
-    // Formes pour chaque direction (comme un bouton de 2 pixels d'épaisseur)
-    private static final VoxelShape NORTH_SHAPE = Block.createCuboidShape(5.0, 4.0, 14.0, 11.0, 12.0, 16.0);
-    private static final VoxelShape SOUTH_SHAPE = Block.createCuboidShape(5.0, 4.0, 0.0, 11.0, 12.0, 2.0);
-    private static final VoxelShape WEST_SHAPE = Block.createCuboidShape(14.0, 4.0, 5.0, 16.0, 12.0, 11.0);
-    private static final VoxelShape EAST_SHAPE = Block.createCuboidShape(0.0, 4.0, 5.0, 2.0, 12.0, 11.0);
+    private static final VoxelShape NORTH_SHAPE = Block.createCuboidShape(4.0, 4.0, 14.0, 12.0, 13.0, 16.0);
+    private static final VoxelShape SOUTH_SHAPE = Block.createCuboidShape(4.0, 4.0, 0.0, 12.0, 13.0, 2.0);
+    private static final VoxelShape WEST_SHAPE = Block.createCuboidShape(14.0, 4.0, 4.0, 16.0, 13.0, 12.0);
+    private static final VoxelShape EAST_SHAPE = Block.createCuboidShape(0.0, 4.0, 4.0, 2.0, 13.0, 12.0);
 
     public WallAttachableBenchmarkBlock(Settings settings) {
         super(settings);
