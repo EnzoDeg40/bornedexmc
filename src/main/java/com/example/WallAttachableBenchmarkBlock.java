@@ -97,25 +97,17 @@ public class WallAttachableBenchmarkBlock extends Block {
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
         if (!world.isClient) {
-            String coordinatesText = "Wall Benchmark";
-            String measureText = "meter";
+            String coordinatesText = "Survey benchmark";
             
             if (player instanceof ServerPlayerEntity serverPlayer) {
                 String playerLanguage = serverPlayer.getClientOptions().language();
 
                 if (playerLanguage.startsWith("fr")) {
-                    coordinatesText = "Repère mural de nivellement";
-                    measureText = "mètre";
-                } else if (playerLanguage.startsWith("ch")) {
-                    coordinatesText = "墙壁水准点";
-                    measureText = "米";
-                } else if (playerLanguage.startsWith("de")) {
-                    coordinatesText = "Wand-Höhenfestpunkt";
-                    measureText = "Meter";
+                    coordinatesText = "Repère nivellement";
                 }
             }
-
-            player.sendMessage(Text.literal(coordinatesText + " " + (pos.getY() - 63) + ".5 " + measureText), true);
+            
+            player.sendMessage(Text.literal(coordinatesText + " " + (pos.getY() - 63) + ".5 "), true);
         }
         return ActionResult.SUCCESS;
     }
