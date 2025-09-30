@@ -2,9 +2,9 @@
   "format_version": "1.21.6",
   "parent": "minecraft:block/block",
   "textures": {
-    "all": "modid:block/wall_attachable_benchmark_block",
-    "0": "modid:block/wall_attachable_benchmark_block",
-    "particle": "modid:block/wall_attachable_benchmark_block"
+    "all": "modid:block/borne",
+    "0": "modid:block/borne",
+    "particle": "modid:block/borne"
   },
 	"elements": [
 		{

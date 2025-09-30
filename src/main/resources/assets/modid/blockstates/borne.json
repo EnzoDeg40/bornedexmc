@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "modid:block/borne"
+    },
+    "facing=south": {
+      "model": "modid:block/borne",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "modid:block/borne",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "modid:block/borne",
+      "y": 270
+    }
+  }
+}

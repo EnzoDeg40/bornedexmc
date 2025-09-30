@@ -22,7 +22,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 
-public class WallAttachableBenchmarkBlock extends Block {
+public class Borne extends Block {
     public static final EnumProperty<Direction> FACING = Properties.HORIZONTAL_FACING;
     
     private static final VoxelShape NORTH_SHAPE = Block.createCuboidShape(4.0, 4.0, 14.0, 12.0, 13.0, 16.0);
@@ -30,7 +30,7 @@ public class WallAttachableBenchmarkBlock extends Block {
     private static final VoxelShape WEST_SHAPE = Block.createCuboidShape(14.0, 4.0, 4.0, 16.0, 13.0, 12.0);
     private static final VoxelShape EAST_SHAPE = Block.createCuboidShape(0.0, 4.0, 4.0, 2.0, 13.0, 12.0);
 
-    public WallAttachableBenchmarkBlock(Settings settings) {
+    public Borne(Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH));
     }

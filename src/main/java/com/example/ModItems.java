@@ -19,7 +19,7 @@ public class ModItems {
 
     // Create the custom item group
     public static final ItemGroup CUSTOM_ITEM_GROUP = FabricItemGroup.builder()
-        .icon(() -> new ItemStack(ModBlocks.WALL_ATTACHABLE_BENCHMARK_BLOCK))
+        .icon(() -> new ItemStack(ModBlocks.BORNE))
         .displayName(Text.translatable("itemgroup.modid.custom_group"))
         .build();
 

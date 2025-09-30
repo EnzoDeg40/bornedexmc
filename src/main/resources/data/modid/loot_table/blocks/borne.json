@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "modid:wall_attachable_benchmark_block"
+          "name": "modid:borne"
         }
       ],
       "conditions": [

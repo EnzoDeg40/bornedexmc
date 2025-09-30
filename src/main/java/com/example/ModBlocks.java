@@ -44,13 +44,13 @@ public class ModBlocks {
 
     public static void initialize() {
 		ItemGroupEvents.modifyEntriesEvent(ModItems.CUSTOM_ITEM_GROUP_KEY).register((itemGroup) -> {
-			itemGroup.add(ModBlocks.WALL_ATTACHABLE_BENCHMARK_BLOCK.asItem());
+			itemGroup.add(ModBlocks.BORNE.asItem());
 		});
     }
     
-    public static final Block WALL_ATTACHABLE_BENCHMARK_BLOCK = register(
-        "wall_attachable_benchmark_block",
-        WallAttachableBenchmarkBlock::new,
+    public static final Block BORNE = register(
+        "borne",
+        Borne::new,
         AbstractBlock.Settings.create().sounds(BlockSoundGroup.STONE).strength(2.0f).requiresTool(),
         true
     );
