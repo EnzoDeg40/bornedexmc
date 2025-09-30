@@ -107,7 +107,24 @@ public class WallAttachableBenchmarkBlock extends Block {
                 }
             }
             
-            player.sendMessage(Text.literal(coordinatesText + " " + (pos.getY() - 63) + ".5 "), true);
+            int seaLevel = 0;
+            if (world.getRegistryKey() == World.OVERWORLD) {
+                seaLevel = 63;
+            } else if (world.getRegistryKey() == World.NETHER) {
+                seaLevel = 32;
+            }
+
+            if (seaLevel == 0){
+                String message = coordinatesText + " §k?";
+                player.sendMessage(Text.literal(message), true);
+                return ActionResult.SUCCESS;
+            }
+
+            int relativeHeight = pos.getY() - seaLevel;
+            double displayHeight = relativeHeight + 0.5;
+
+            String message = coordinatesText + " " + displayHeight;
+            player.sendMessage(Text.literal(message), true);
         }
         return ActionResult.SUCCESS;
     }
