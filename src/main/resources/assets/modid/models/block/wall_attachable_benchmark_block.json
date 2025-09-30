@@ -281,6 +281,11 @@
 		},
 		"fixed": {
 			"translation": [0, 0, -7.25]
+		},
+		"gui": {
+			"rotation": [0, -180, 0],
+			"translation": [0, -0.75, 0],
+			"scale": [1.5, 1.5, 1.5]
 		}
 	},
 	"groups": [

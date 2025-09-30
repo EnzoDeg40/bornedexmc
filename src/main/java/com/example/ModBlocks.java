@@ -5,7 +5,6 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
@@ -44,7 +43,7 @@ public class ModBlocks {
 	}
 
     public static void initialize() {
-		ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register((itemGroup) -> {
+		ItemGroupEvents.modifyEntriesEvent(ModItems.CUSTOM_ITEM_GROUP_KEY).register((itemGroup) -> {
 			itemGroup.add(ModBlocks.WALL_ATTACHABLE_BENCHMARK_BLOCK.asItem());
 		});
     }
@@ -56,35 +55,3 @@ public class ModBlocks {
         true
     );
 }
-
-// public class ModBlocks {
-//     // Déclarer les variables sans les initialiser
-//     public static Block DECORATIVE_BLOCK;
-//     public static BlockItem DECORATIVE_BLOCK_ITEM;
-
-//     public static void registerModBlocks() {
-//         ExampleMod.LOGGER.info("Registering Mod Blocks for " + ExampleMod.MOD_ID);
-
-//         // Créer et enregistrer le bloc
-//         DECORATIVE_BLOCK = Registry.register(
-//                 Registries.BLOCK,
-//                 Identifier.of(ExampleMod.MOD_ID, "decorative_block"),
-//                 new Block(AbstractBlock.Settings.create()
-//                         .strength(3.0f, 3.0f)
-//                         .sounds(BlockSoundGroup.STONE)
-//                         .requiresTool())
-//         );
-
-//         // Créer et enregistrer l'item du bloc
-//         DECORATIVE_BLOCK_ITEM = Registry.register(
-//                 Registries.ITEM,
-//                 Identifier.of(ExampleMod.MOD_ID, "decorative_block"),
-//                 new BlockItem(DECORATIVE_BLOCK, new Item.Settings())
-//         );
-
-//         // Ajouter le bloc au groupe d'items "Building Blocks"
-//         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
-//             entries.add(DECORATIVE_BLOCK);
-//         });
-//     }
-// }
