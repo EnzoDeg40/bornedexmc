@@ -3,6 +3,7 @@ package com.example;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -45,6 +46,7 @@ public class ModBlocks {
     public static void initialize() {
 		ItemGroupEvents.modifyEntriesEvent(ModItems.CUSTOM_ITEM_GROUP_KEY).register((itemGroup) -> {
 			itemGroup.add(ModBlocks.BORNE.asItem());
+			itemGroup.add(ModBlocks.THEODOLITE.asItem());
 		});
     }
     
@@ -54,4 +56,29 @@ public class ModBlocks {
         AbstractBlock.Settings.create().sounds(BlockSoundGroup.STONE).strength(2.0f).requiresTool(),
         true
     );
+    
+    public static final Block THEODOLITE = register(
+        "theodolite",
+        Theodolite::new,
+        AbstractBlock.Settings.create().sounds(BlockSoundGroup.METAL).strength(3.0f).requiresTool(),
+        true
+    );
+    
+    // BlockEntityType pour la borne
+    public static final BlockEntityType<BorneBlockEntity> BORNE_BLOCK_ENTITY_TYPE = 
+        Registry.register(
+            Registries.BLOCK_ENTITY_TYPE,
+            Identifier.of(ExampleMod.MOD_ID, "borne"),
+            net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder
+                .create(BorneBlockEntity::new, BORNE).build()
+        );
+    
+    // BlockEntityType pour le theodolite
+    public static final BlockEntityType<TheodoliteBlockEntity> THEODOLITE_BLOCK_ENTITY_TYPE = 
+        Registry.register(
+            Registries.BLOCK_ENTITY_TYPE,
+            Identifier.of(ExampleMod.MOD_ID, "theodolite"),
+            net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder
+                .create(TheodoliteBlockEntity::new, THEODOLITE).build()
+        );
 }

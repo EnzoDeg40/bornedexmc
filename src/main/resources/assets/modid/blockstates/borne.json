@@ -1,18 +1,33 @@
 {
   "variants": {
-    "facing=north": {
-      "model": "modid:block/borne"
+    "activated=false,facing=north": {
+      "model": "modid:block/borne_inactive"
     },
-    "facing=south": {
-      "model": "modid:block/borne",
+    "activated=false,facing=south": {
+      "model": "modid:block/borne_inactive",
       "y": 180
     },
-    "facing=east": {
-      "model": "modid:block/borne",
+    "activated=false,facing=east": {
+      "model": "modid:block/borne_inactive",
       "y": 90
     },
-    "facing=west": {
-      "model": "modid:block/borne",
+    "activated=false,facing=west": {
+      "model": "modid:block/borne_inactive",
+      "y": 270
+    },
+    "activated=true,facing=north": {
+      "model": "modid:block/borne_active"
+    },
+    "activated=true,facing=south": {
+      "model": "modid:block/borne_active",
+      "y": 180
+    },
+    "activated=true,facing=east": {
+      "model": "modid:block/borne_active",
+      "y": 90
+    },
+    "activated=true,facing=west": {
+      "model": "modid:block/borne_active",
       "y": 270
     }
   }

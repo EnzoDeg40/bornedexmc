@@ -1,12 +1,15 @@
 package com.example;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
@@ -21,9 +24,11 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
+import org.jetbrains.annotations.Nullable;
 
-public class Borne extends Block {
+public class Borne extends Block implements BlockEntityProvider {
     public static final EnumProperty<Direction> FACING = Properties.HORIZONTAL_FACING;
+    public static final BooleanProperty ACTIVATED = BooleanProperty.of("activated");
     
     private static final VoxelShape NORTH_SHAPE = Block.createCuboidShape(4.0, 4.0, 14.0, 12.0, 13.0, 16.0);
     private static final VoxelShape SOUTH_SHAPE = Block.createCuboidShape(4.0, 4.0, 0.0, 12.0, 13.0, 2.0);
@@ -32,12 +37,12 @@ public class Borne extends Block {
 
     public Borne(Settings settings) {
         super(settings);
-        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH));
+        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(ACTIVATED, false));
     }
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(FACING);
+        builder.add(FACING, ACTIVATED);
     }
 
     @Override
@@ -96,35 +101,43 @@ public class Borne extends Block {
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
         if (!world.isClient) {
-            String coordinatesText = "Survey benchmark";
-            
-            if (player instanceof ServerPlayerEntity serverPlayer) {
-                String playerLanguage = serverPlayer.getClientOptions().language();
-
-                if (playerLanguage.startsWith("fr")) {
-                    coordinatesText = "Repère nivellement";
+            // Vérifier si la borne est activée
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            if (blockEntity instanceof BorneBlockEntity borneEntity) {
+                if (!borneEntity.isActivated()) {
+                    String errorMessage = "Survey benchmark not activated";
+                    
+                    if (player instanceof ServerPlayerEntity serverPlayer) {
+                        String playerLanguage = serverPlayer.getClientOptions().language();
+                        if (playerLanguage.startsWith("fr")) {
+                            errorMessage = "Repère de nivellement non activé";
+                        }
+                    }
+                    
+                    player.sendMessage(Text.literal(errorMessage), true);
+                    return ActionResult.SUCCESS;
                 }
-            }
-            
-            int seaLevel = 0;
-            if (world.getRegistryKey() == World.OVERWORLD) {
-                seaLevel = 63;
-            } else if (world.getRegistryKey() == World.NETHER) {
-                seaLevel = 32;
-            }
-
-            if (seaLevel == 0){
-                String message = coordinatesText + " §k?";
+                
+                // La borne est activée, afficher la hauteur stockée
+                String coordinatesText = "Survey benchmark";
+                
+                if (player instanceof ServerPlayerEntity serverPlayer) {
+                    String playerLanguage = serverPlayer.getClientOptions().language();
+                    if (playerLanguage.startsWith("fr")) {
+                        coordinatesText = "Repère nivellement";
+                    }
+                }
+                
+                double displayHeight = borneEntity.getStoredHeight();
+                String message = coordinatesText + " " + displayHeight;
                 player.sendMessage(Text.literal(message), true);
-                return ActionResult.SUCCESS;
             }
-
-            int relativeHeight = pos.getY() - seaLevel;
-            double displayHeight = relativeHeight + 0.5;
-
-            String message = coordinatesText + " " + displayHeight;
-            player.sendMessage(Text.literal(message), true);
         }
         return ActionResult.SUCCESS;
+    }
+    
+    @Override
+    public @Nullable BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new BorneBlockEntity(pos, state);
     }
 }

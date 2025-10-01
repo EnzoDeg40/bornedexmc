@@ -1,0 +1,33 @@
+{
+	"format_version": "1.21.6",
+	"parent": "minecraft:block/block",
+	"textures": {
+		"all": "modid:block/theodolite",
+		"0": "modid:block/theodolite",
+		"particle": "modid:block/theodolite"
+	},
+	"elements": [
+		{
+			"from": [6, 0, 2],
+			"to": [10, 4, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 2, 8]},
+			"faces": {
+				"north": {"uv": [4, 12, 8, 16], "texture": "#0"},
+				"east": {"uv": [0, 0, 12, 4], "texture": "#0"},
+				"south": {"uv": [4, 8, 8, 12], "texture": "#0"},
+				"west": {"uv": [0, 0, 12, 4], "texture": "#0"},
+				"up": {"uv": [0, 4, 4, 16], "texture": "#0"},
+				"down": {"uv": [0, 4, 4, 16], "texture": "#0"}
+			}
+		}
+	],
+	"display": {},
+	"groups": [
+		{
+			"name": "upper_instrument",
+			"origin": [8, 2, 8],
+			"color": 0,
+			"children": [0]
+		}
+	]
+}
