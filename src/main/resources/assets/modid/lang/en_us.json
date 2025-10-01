@@ -1,4 +1,5 @@
 {
-  "block.modid.decorative_block": "Decorative Block",
-  "block.modid.wall_attachable_benchmark_block": "Wall Benchmark"
+  "block.modid.borne": "Survey benchmark",
+  "block.modid.theodolite": "Theodolite",
+  "itemgroup.modid.custom_group": "Bornedex"
 }

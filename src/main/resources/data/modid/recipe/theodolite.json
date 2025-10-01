@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " G ",
+    " S ",
+    "SSS"
+  ],
+  "key": {
+    "S": "minecraft:stick",
+    "G": "minecraft:spyglass"
+  },
+  "result": {
+    "id": "modid:borne",
+    "count": 1
+  }
+}

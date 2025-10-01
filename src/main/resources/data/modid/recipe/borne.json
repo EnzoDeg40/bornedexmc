@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " S ",
+    "SCS",
+    " S "
+  ],
+  "key": {
+    "S": "minecraft:stone",
+    "C": "minecraft:copper_ingot"
+  },
+  "result": {
+    "id": "modid:borne",
+    "count": 1
+  }
+}
